@@ -6,6 +6,79 @@
 
 int main (void){
 
+    int N, M, op;
+
+    menu();
+
+    printf("  Qual o tamanho da matriz (nxm) ?\n");
+
+    scanf("%d %d", &N, &M);
+
+
+    Elemento* vet_lin[N];
+
+    for(int i = 0; i<N; ++i)
+        vet_lin[i] = NULL;
+
+
+    Elemento* vet_col[M];
+
+    for(int i = 0; i<M; ++i)
+        vet_col[i] = NULL;
+
+    Elemento elemento;
+
+    do{
+        menu();
+
+        printf("1 - Inserir elemento:\n");
+        printf("2 - Mostrar a matriz.\n");
+        printf("3 - Sair e limpar a memória.\n");
+
+        scanf("%d", &op);
+
+        switch(op){
+            case 1:
+
+                menu();
+
+                do{
+                    system("cls");
+                    printf("Posicao de insercao - i, j :\n");
+                    scanf("%d %d", &elemento.lin, &elemento.col);
+
+                    if(elemento.lin >= N || elemento.lin < 0 || elemento.col >= M || elemento.col < 0){
+                        printf("Insira uma posicao valida!\n");
+                        getch();
+                    }
+
+                }while(elemento.lin >= N || elemento.lin < 0 || elemento.col >= M || elemento.col < 0);
+                
+                printf("Valor:\n");
+                scanf("%d", &elemento.valor);
+
+                if(Inserir_Elemento(vet_lin, N, vet_col, M, elemento)){
+                    printf("Elemento inserido com sucesso!\n");
+                }else{
+                    printf("Nao foi possivel inserir o elemento!\n");
+                }
+
+                getch();
+
+                break;
+
+            case 2:
+
+                Mostrar_Matriz(vet_lin, N, vet_col, M);
+
+                break;
+                
+            default:
+
+                break;
+        }
+
+    }while(op != 2);
 
 
 

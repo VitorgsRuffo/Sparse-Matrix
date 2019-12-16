@@ -45,7 +45,7 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
         while(atual != NULL && (*atual).col < (*no).col){
             ant = atual;
-            atual = (*atual).prox_col;
+            atual = (*atual).prox_lin;
         }
 
         if((*ant).col == (*no).col || (*atual).col == (*no).col){
@@ -68,9 +68,9 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
         }else if((*atual).col > (*no).col && (*ant).col < (*no).col){ // INSERÇÃO NO MEIO:
 
-            (*ant).prox_col = no;
+            (*ant).prox_lin = no;
 
-            (*no).prox_col = atual;
+            (*no).prox_lin = atual;
         }
 
         //Lidando com os ligamentos da coluna:
@@ -91,7 +91,7 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
             while(atuall != NULL && (*atuall).lin < (*no).lin){
 
                 antt = atuall;
-                atuall = (*atuall).prox_lin;
+                atuall = (*atuall).prox_col;
 
             }
 
@@ -139,7 +139,7 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
 
 
-int Mostrar_Matriz(Elemento** vet_lin, int N, Elemento** vet_col, int M){
+int Mostrar_Matriz(Elemento** vet_lin, int N, int M){
 
     Elemento *aux;
 
@@ -174,6 +174,35 @@ int Mostrar_Matriz(Elemento** vet_lin, int N, Elemento** vet_col, int M){
     }
 
     return 1;
+}
+
+
+
+int Liberar_Memoria(Elemento** vet_lin, int N, int M){
+
+   
+
+    for(int i = 0; i<N; ++i){
+
+        if(vet_lin[i] != NULL){
+            
+            Elemento *aux;
+
+            while(vet_lin[i] != NULL){
+
+                aux = vet_lin[i];
+                vet_lin[i] = (*vet_lin[i]).prox_lin;
+                free(aux);
+
+            }
+        }
+
+        
+
+    }
+
+    return 1;
+
 }
 
 

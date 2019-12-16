@@ -33,7 +33,7 @@ int main (void){
 
         printf("1 - Inserir elemento:\n");
         printf("2 - Mostrar a matriz.\n");
-        printf("3 - Sair e limpar a memória.\n");
+        printf("3 - Sair e limpar a memoria.\n");
 
         scanf("%d", &op);
 
@@ -49,7 +49,7 @@ int main (void){
 
                     if(elemento.lin >= N || elemento.lin < 0 || elemento.col >= M || elemento.col < 0){
                         printf("Insira uma posicao valida!\n");
-                        getch();
+                        system("pause");
                     }
 
                 }while(elemento.lin >= N || elemento.lin < 0 || elemento.col >= M || elemento.col < 0);
@@ -63,23 +63,24 @@ int main (void){
                     printf("Nao foi possivel inserir o elemento!\n");
                 }
 
-                getch();
+                system("pause");
 
                 break;
 
             case 2:
 
-                Mostrar_Matriz(vet_lin, N, vet_col, M);
+                Mostrar_Matriz(vet_lin, N, M);
 
-                getch();
+               system("pause");
 
                 break;
 
             default:
 
+                Liberar_Memoria(vet_lin, N, M);
+
                 break;
         }
-
     }while(op != 3);
 
 

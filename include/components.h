@@ -13,4 +13,6 @@ void menu(void);
 
 int Inserir_Elemento(Elemento** vet_lin, int N, Elemento** vet_col, int M, Elemento el);
 
-int Mostrar_Matriz(Elemento** vet_lin, int N, Elemento** vet_col, int M);
+int Mostrar_Matriz(Elemento** vet_lin, int N, int M);
+
+int Liberar_Memoria(Elemento** vet_lin, int N, int M);

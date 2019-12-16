@@ -36,7 +36,7 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
         vet_lin[el.lin] = no;
 
         (*no).prox_lin = NULL;
-    
+
     //Esta linha ja possui elementos:
     }else{
 
@@ -55,21 +55,21 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
         //Se isso acontecer significa que nem entramos no while, o novo no deve ser inserido antes de todos os outros:
         if(atual == vet_lin[el.lin]){ // INSERÇÃO NO COMEÇO:
-            
+
             (*no).prox_lin = vet_lin[el.lin];
 
             vet_lin[el.lin] = no;
 
         }else if(atual == NULL){// INSERÇÃO NO FINAL:
-            
+
             (*ant).prox_lin = no;
 
             (*no).prox_lin = NULL;
-        
+
         }else if((*atual).col > (*no).col && (*ant).col < (*no).col){ // INSERÇÃO NO MEIO:
-            
+
             (*ant).prox_col = no;
-            
+
             (*no).prox_col = atual;
         }
 
@@ -81,7 +81,7 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
             vet_col[el.col] = no;
 
             (*no).prox_col = NULL;
-        
+
         //Caso ja houverem elementos:
         }else{
 
@@ -92,7 +92,7 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
                 antt = atuall;
                 atuall = (*atuall).prox_lin;
-            
+
             }
 
 
@@ -103,38 +103,35 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
             //Se isso acontecer significa que nem entramos no while, o novo no deve ser inserido antes de todos os outros:
             if(atuall == vet_col[el.col]){ // INSERÇÃO NO COMEÇO:
-            
+
                 (*no).prox_col = vet_col[el.col];
 
                 vet_col[el.col] = no;
 
-                
+
 
             }else if(atuall == NULL){// INSERÇÃO NO FINAL: //atual apontando para NULL e antt apontando para o ultimo elemento da coluna:
 
                 (*antt).prox_col = no;
                 (*no).prox_col = NULL;
 
-                
-            
+
+
             }else if((*atuall).lin > (*no).lin && (*antt).lin < (*no).lin){ //INSERÇÃO NO MEIO:
-            
+
                 (*antt).prox_col = no;
-            
+
                 (*no).prox_col = atuall;
 
-                
+
             }
-
-            return 1;
-
 
         }
 
-        
-        
+
+
     }
- 
+
 
     return 1;
 
@@ -144,11 +141,39 @@ int Inserir_Elemento(Elemento* *vet_lin, int N, Elemento* *vet_col, int M, Eleme
 
 int Mostrar_Matriz(Elemento** vet_lin, int N, Elemento** vet_col, int M){
 
-    for(int i = 0; i<)
+    Elemento *aux;
 
+    for(int i = 0; i < N; ++i){
 
+        aux = vet_lin[i];
 
+        if(aux == NULL){
 
+            for(int j = 0; j<M; ++j){
+                printf("0 ");
+            }
+
+        }else{
+
+            for(int j = 0; j < M; ++j){
+                if(aux != NULL){
+                    if(j == (*aux).col){
+                        printf("%d ", (*aux).valor);
+                        aux = (*aux).prox_lin;
+                    }else{
+                        printf("0 ");
+                    }
+                }else{
+                    printf("0 ");
+                }
+            }
+        }
+
+        printf("\n");
+
+    }
+
+    return 1;
 }
 
 

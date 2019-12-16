@@ -53,7 +53,7 @@ int main (void){
                     }
 
                 }while(elemento.lin >= N || elemento.lin < 0 || elemento.col >= M || elemento.col < 0);
-                
+
                 printf("Valor:\n");
                 scanf("%d", &elemento.valor);
 
@@ -71,14 +71,16 @@ int main (void){
 
                 Mostrar_Matriz(vet_lin, N, vet_col, M);
 
+                getch();
+
                 break;
-                
+
             default:
 
                 break;
         }
 
-    }while(op != 2);
+    }while(op != 3);
 
 
 
